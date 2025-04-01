@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Frontend React App
+  frontend:
+    build:
+      context: ./blogspot-ui  # Path to your React app
+    ports:
+      - "5003:5003"  # Expose the port of React app
+    environment:
+      - VITE_API_URL=http://backend:8003  # Set the backend API URL in the frontend
+    depends_on:
+      - backend
+    networks:
+      - backend_network
+
+  # Backend Django App
+  backend:
+    build:
+      context: ./blogspot-backend  # Path to your Django app
+    ports:
+      - "8003:8003"  # Expose the port for Django
+    environment:
+      - DATABASE_URL=mysql://komal-blogspot:Myuser@1234@db/blogspotdb  # Database connection URL
+    depends_on:
+      - db
+    networks:
+      - backend_network
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: blogspotdb
+      MYSQL_USER: komal-blogspot
+      MYSQL_PASSWORD: kaku@1205
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend_network
+
+# Define a custom network for the services to communicate
+networks:
+  backend_network:
+    driver: bridge
+
+# Define a volume for persistent MySQL data
+volumes:
+  mysql_data:

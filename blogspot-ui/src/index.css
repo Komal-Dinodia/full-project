@@ -1,0 +1,75 @@
+body {
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+h1 {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  padding-bottom: 50px; /* Creates space before the footer */
+}
+
+.custom-navbar {
+  background-color: #782499 !important; /* Change navbar color */
+  padding: 10px 0;
+}
+
+.navbar-brand img {
+  border-radius: 50%; /* Make logo rounded */
+}
+
+.navbar-nav .nav-link, .btn {
+  color: white !important;
+  font-weight: bold;
+  border: none !important;
+}
+
+.navbar-nav .nav-link:hover, .btn:hover {
+  color: #ffcc00 !important; /* Change color on hover */
+}
+
+span {
+  color: white;
+}
+
+.text-center.mt-3 {
+  color: black;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px-992px) {
+  .navbar-toggler {
+    border: none;
+    height: max-content;
+  }
+  .navbar-collapse {
+    background-color: #782499;
+    padding: 10px;
+    text-align: center;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.custom-btn {
+  background-color: #f1ce06e5; 
+  color: white; 
+}
